@@ -1,18 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import Upload from "./components/Upload";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  // change this to deployed backend if needed
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
   return (
-  
-     <>
-     Hi welcome to the Social Media Content Analyzer App
-     <working>working</working>
-     </>
-  )
-}
+    <div className="container">
+      <div className="header">
+        <div className="h1">Social Media Content Analyzer — Upload & Extract</div>
+      </div>
 
-export default App
+      <Upload backendUrl={backendUrl} />
+
+      <div style={{marginTop:20}} className="small">
+        Note: This demo extracts text from PDFs and images using your backend, then performs a client-side quick analysis (offline). For production, replace backend URL in <code>VITE_BACKEND_URL</code>.
+      </div>
+    </div>
+  );
+}
