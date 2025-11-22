@@ -19,7 +19,7 @@ This tool is ideal for analyzing social media posts, and scanned documents.
 ✨ Key Features
 📂 1. File Upload
 
-Upload PDF or Image files
+Upload PDF or Image files by manual or just drag and drop
 
 Simple and clean UI
 
