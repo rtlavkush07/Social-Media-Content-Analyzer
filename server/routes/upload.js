@@ -2,7 +2,7 @@ import express from "express";
 import multer from "multer";
 import { extractPDFText } from "../services/pdfParser.js";
 import extractOCR from "../services/ocr.js";
-
+import fs from "fs";
 const router = express.Router();
 const upload = multer({ dest: "uploads/" });
 
@@ -30,10 +30,19 @@ router.post("/upload", upload.single("file"), async (req, res) => {
       return res.status(400).json({ error: "Only PDF or image allowed" });
     }
 
+     // 🧹 AUTO DELETE UPLOADED FILE
+    fs.unlink(file.path, (err) => {
+      if (err) console.error("Delete error:", err);
+      else console.log("File deleted:", file.path);
+    });
+
+
     return res.json({ text });
 
   } catch (err) {
     console.error("Critical upload error:", err);
+      // Delete file even if error happens
+    fs.unlink(file.path, () => {});
     return res.status(500).json({ error: "Processing failed" });
   }
 });
