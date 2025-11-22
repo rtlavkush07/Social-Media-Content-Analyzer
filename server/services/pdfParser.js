@@ -1,13 +1,9 @@
 import fs from "fs";
 import * as pdfParse from "pdf-parse";
 
-async function extractPDFText(filePath) {
+// Extract text from PDF
+export default async function extractPDFText(filePath) {
   const fileBuffer = fs.readFileSync(filePath);
-
-  // pdfParse default function ko call karna padta hai
-  const result = await pdfParse.default(fileBuffer);
-
-  return result.text;
+  const data = await pdfParse.default(fileBuffer);
+  return data.text;
 }
-
-export default extractPDFText;
