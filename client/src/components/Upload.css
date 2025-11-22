@@ -1,0 +1,121 @@
+/* Upload.css */
+
+/* --- Variables for Easy Maintenance --- */
+:root {
+  --bg-gradient: linear-gradient(135deg, #0f0a1c 0%, #301944 50%, #0f0a1c 100%);
+  --text-color: #FFFFFF;
+  --secondary-text: #CCCCCC;
+  --button-color: #2563EB; /* Blue 600 */
+  --card-background: rgba(255, 255, 255, 0.08);
+  --border-radius-lg: 0.5rem;
+}
+
+/* --- Main Container Styling --- */
+.upload-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 30px;
+  font-family: system-ui, sans-serif;
+  background: var(--bg-gradient); 
+  color: var(--text-color);
+  border-radius: var(--border-radius-lg); 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8); 
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 400px;
+}
+
+/* --- Header and Typography --- */
+.upload-title {
+  padding: 10px 0; 
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--button-color); /* Blue highlight for the title */
+}
+
+.upload-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: var(--secondary-text);
+}
+
+/* --- File Input Styling --- */
+.upload-input {
+  margin-bottom: 1.5rem; 
+  padding: 12px; 
+  display: block;
+  width: 100%;
+  background-color: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius-lg);
+  font-size: 1rem;
+}
+
+/* --- Button Styling --- */
+.upload-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: var(--button-color);
+  border-radius: var(--border-radius-lg); 
+  color: white;
+  border: none;
+  transition: background-color 0.3s, transform 0.1s, opacity 0.3s;
+  box-shadow: 0 4px 15px #2563eb66;
+}
+
+.upload-button:hover:not(:disabled) {
+  background-color: #3B82F6; /* Slightly lighter blue on hover */
+}
+
+.upload-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* --- Extracted Text Display --- */
+.extracted-text-box {
+  margin-top: 2rem; 
+  background: var(--card-background); 
+  padding: 20px; 
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.15); 
+}
+
+.extracted-text-box h3 {
+  border-bottom: 1px solid #CCCCCC33;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: var(--secondary-text);
+}
+
+.extracted-text-box pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+/* --- Spinner CSS (Remains the same but moved) --- */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--text-color);
+  border-top: 3px solid var(--button-color);
+  border-radius: 50%;
+  margin-right: 8px;
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
