@@ -174,22 +174,22 @@ fs (file cleanup)
 Social-Media-Content-Analyzer/
 │
 ├── server/
-│   ├── routes/
-│   │   └── upload.js
-│   ├── services/
-│   │   ├── pdfParser.js
-│   │   └── ocr.js
-│   ├── server.js
-│   └── package.json
+│ ├── routes/
+│ │ └── upload.js
+│ ├── services/
+│ │ ├── pdfParser.js
+│ │ └── ocr.js
+│ ├── server.js
+│ └── package.json
 │
 └── client/
-    ├── src/
-    │   ├── components/Upload.jsx
-    │   ├── utils/analysis.js
-    │   ├── Upload.css
-    │   └── App.jsx
-    ├── index.html
-    └── package.json
+├── src/
+│ ├── components/Upload.jsx
+│ ├── utils/analysis.js
+│ ├── Upload.css
+│ └── App.jsx
+├── index.html
+└── package.json
 
 ▶️ How to Run Locally
 Backend
@@ -197,14 +197,12 @@ cd server
 npm install
 npm start
 
-
 👉 Runs at: http://localhost:5000
 
 Frontend
 cd client
 npm install
 npm run dev
-
 
 👉 Runs at: http://localhost:5173
 
@@ -215,30 +213,29 @@ Form-Data:
 
 file: <PDF or Image>
 
-
 Response:
 
 {
-  "text": "Extracted content here"
+"text": "Extracted content here"
 }
 
 🧪 Sample Analysis Output
 {
-  "sentiment": "Positive",
-  "sentimentScore": 0.35,
-  "readability": 78.52,
-  "engagementScore": 84,
-  "totalWords": 154,
-  
-  "detectedCategory": "coding",
-  "suggestedHashtags": ["#coding","#developer","#javascript","#reactjs"],
-  "suggestedEmojis": ["💻","⚡","🤖"],
+"sentiment": "Positive",
+"sentimentScore": 0.35,
+"readability": 78.52,
+"engagementScore": 84,
+"totalWords": 154,
 
-  "topWords": [{ "word": "react", "count": 3 }],
-  "recommendations": [
-    "Great tone! Positive posts get more engagement.",
-    "Add 1–3 emojis to increase appeal."
-  ]
+"detectedCategory": "coding",
+"suggestedHashtags": ["#coding","#developer","#javascript","#reactjs"],
+"suggestedEmojis": ["💻","⚡","🤖"],
+
+"topWords": [{ "word": "react", "count": 3 }],
+"recommendations": [
+"Great tone! Positive posts get more engagement.",
+"Add 1–3 emojis to increase appeal."
+]
 }
 
 📝 Updated 200-Word Approach (NEW FEATURES INCLUDED)
@@ -248,6 +245,28 @@ This application implements a hybrid document-processing architecture combining 
 The extracted text undergoes a multi-stage analysis pipeline. The analyzer computes readability, sentiment score, emoji usage, hashtag count, and overall engagement score. A custom NLP module detects the document’s topic—such as coding, fitness, food, or motivation—based on keyword clustering. The system then generates AI-like recommendations, suggesting hashtags, emojis, CTAs, and text improvements to maximize social media engagement. This includes dynamic hashtag generation based on detected topic and smart emoji suggestions.
 
 On the frontend, the dashboard UI is built with React and includes metric cards, animated score bars, hashtag chips, and smooth-loading interactions. Axios handles backend communication with an Express API. The project follows clean code practices, modular service structure, and strong error handling, making it production-ready and easy to extend.
+
+Live Demo Project : - https://social-media-content-analyzer-26m5.vercel.app/
+
+## Demo of project ( screenshots )
+
+![Screenshot](./outputs/home.png)
+
+## -------
+
+![Screenshot](./outputs/image_processing.png)
+
+## -------
+
+![Screenshot](./outputs/extracted_text.png)
+
+## -------
+
+![Screenshot](./outputs/enagement_score.png)
+
+## -------
+
+![Screenshot](./outputs/hashtag.png)
 
 👤 Author
 
