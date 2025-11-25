@@ -1,59 +1,151 @@
 📘 Social Media Content Analyzer
 
-A lightweight, production-ready application that allows users to upload PDFs and images, extract text using PDF parsing + OCR, and analyze the text for readability, sentiment, and engagement insights.
+An advanced, production-ready application that extracts text from PDFs and images using OCR & PDF parsing, and performs AI-like content analysis to generate social-media-optimized insights.
 
 🚀 Overview
 
-The Social Media Content Analyzer helps users extract and analyze text from documents to understand how engaging, readable, and sentiment-rich their content is.
+The Social Media Content Analyzer allows users to upload PDFs or image files and automatically extract all readable text using a hybrid engine of pdfjs-dist and Tesseract OCR.
 
-It supports:
+Once extracted, the content is analyzed for:
 
-PDF Text Extraction (structured, selectable text)
+Text Readability
 
-OCR Extraction (for scanned PDFs & images)
+Sentiment
 
-Content Quality Analysis (sentiment, readability, engagement, frequency)
+Engagement Potential
 
-This tool is ideal for analyzing social media posts, and scanned documents.
+Keyword Frequency
+
+Topic Detection
+
+Suggested Hashtags
+
+Suggested Emojis
+
+CTA (Call-To-Action) Identification
+
+Smart Recommendations
+
+This tool is ideal for analyzing Instagram captions, Facebook posts, LinkedIn writeups, Twitter posts, scanned notes, and blog snippets.
 
 ✨ Key Features
 📂 1. File Upload
 
-Upload PDF or Image files by manual or just drag and drop
+Upload PDF, JPG, PNG, JPEG, WEBP
 
-Simple and clean UI
+Drag & Drop OR manual file selector
 
-Auto-validation for supported file types
+Smooth UX with loading spinner
 
-Smooth loading UX (spinner included)
+Auto-validation for supported formats
 
-📝 2. Text Extraction
+📝 2. Text Extraction (Dual Engine)
+PDF Parsing (Selectable PDFs)
 
-PDF Parsing: Extracts text using pdfjs-dist while maintaining structure
+✔ Extracts structured text using pdfjs-dist
+✔ Maintains line breaks & formatting
 
-OCR: Uses Tesseract.js to extract text from
+OCR Extraction (Scanned PDFs & Images)
+
+Uses Tesseract.js to extract text from:
 
 Scanned PDFs
 
-JPG, PNG, JPEG, WEBP images
+Handwritten images
 
-Automatically deletes uploaded files to keep server clean
+JPG / PNG / JPEG
 
-🧠 3. Text Analysis
+✔ Automatically detects scanned vs normal PDF
+✔ Auto-file cleanup after extraction
 
-After extraction, the text is analyzed for:
+🧠 3. Advanced Text Analysis (NEW!)
+🔹 Sentiment Analysis
 
-Sentiment (Positive / Neutral / Negative)
+Positive / Neutral / Negative + score (−1 → +1)
 
-Sentiment Score (−1 → +1)
+🔹 Readability Score
 
-Readability Score (0–100)
+0–100 scale with linguistic heuristics
 
-Engagement Score (0–100)
+🔹 Engagement Score
 
-Top Frequent Words
+Weighted combination of
 
-Total Word Count
+Text variety
+
+Readability
+
+Sentiment strength
+
+Emojis
+
+Hashtag quality
+
+CTA presence
+
+🔹 Topic Detection (NEW!)
+
+Auto-detects topic such as:
+
+Coding
+
+Fitness
+
+Study
+
+Travel
+
+Food
+
+Business
+
+Fashion
+
+Motivation
+
+🔹 Suggested Hashtags (NEW!)
+
+AI-style suggestions based on detected topic.
+Example:
+#coding #reactjs #developer #javascript
+
+🔹 Suggested Emojis (NEW!)
+
+Smart emoji suggestions for higher engagement:
+Example:
+💻⚡🤖 (coding)
+💪🔥🏋️ (fitness)
+
+🔹 CTA Detection (NEW!)
+
+Detects phrases like:
+"Follow", "Subscribe", "Share", "Comment", "Check out"
+
+🔹 Smart Recommendations (NEW!)
+
+Provides human-grade advice:
+
+Improve opening line
+
+Add emojis
+
+Add hashtags
+
+Tone improvement
+
+CTA suggestions
+
+📊 4. Analytics Dashboard (NEW UI)
+
+Modern responsive UI features:
+
+✔ Score Bars for Engagement, Readability, Sentiment
+✔ Metric Cards
+✔ Hashtag Chips
+✔ Emoji Display
+✔ Category Badge
+✔ Polished gradient UI
+✔ Smooth animations
 
 🛠 Tech Stack
 Frontend
@@ -62,40 +154,42 @@ React (Vite)
 
 Axios
 
-Custom CSS
+Custom Gradient CSS
+
+Analytics Dashboard UI
 
 Backend
 
 Node.js + Express
 
-Multer (file upload)
+Multer (file uploads)
 
 pdfjs-dist (PDF parser)
 
 Tesseract.js (OCR engine)
 
-fs (auto file cleanup)
+fs (file cleanup)
 
-📁 Project Structure
+📁 Updated Project Structure
 Social-Media-Content-Analyzer/
 │
 ├── server/
-│ ├── routes/
-│ │ └── upload.js
-│ ├── services/
-│ │ ├── pdfParser.js
-│ │ └── ocr.js
-│ ├── server.js
-│ └── package.json
+│   ├── routes/
+│   │   └── upload.js
+│   ├── services/
+│   │   ├── pdfParser.js
+│   │   └── ocr.js
+│   ├── server.js
+│   └── package.json
 │
 └── client/
-├── src/
-│ ├── components/Upload.jsx
-│ ├── utils/analysis.js
-│ ├── Upload.css
-│ └── App.jsx
-├── index.html
-└── package.json
+    ├── src/
+    │   ├── components/Upload.jsx
+    │   ├── utils/analysis.js
+    │   ├── Upload.css
+    │   └── App.jsx
+    ├── index.html
+    └── package.json
 
 ▶️ How to Run Locally
 Backend
@@ -103,52 +197,59 @@ cd server
 npm install
 npm start
 
-Backend runs at:
-👉 http://localhost:5000
+
+👉 Runs at: http://localhost:5000
 
 Frontend
 cd client
 npm install
 npm run dev
 
-Frontend runs at:
-👉 http://localhost:5173
+
+👉 Runs at: http://localhost:5173
 
 🔌 API Endpoint
 POST /api/upload
 
-Request (form-data):
+Form-Data:
 
-file: <PDF or Image file>
+file: <PDF or Image>
+
 
 Response:
 
 {
-"text": "Extracted document text here"
+  "text": "Extracted content here"
 }
 
 🧪 Sample Analysis Output
 {
-"sentiment": "Neutral",
-"sentimentScore": 0,
-"readability": 72,
-"engagementScore": 58,
-"totalWords": 293,
-"topWords": [
-{ "word": "tech", "count": 4 },
-{ "word": "computer", "count": 3 }
-]
+  "sentiment": "Positive",
+  "sentimentScore": 0.35,
+  "readability": 78.52,
+  "engagementScore": 84,
+  "totalWords": 154,
+  
+  "detectedCategory": "coding",
+  "suggestedHashtags": ["#coding","#developer","#javascript","#reactjs"],
+  "suggestedEmojis": ["💻","⚡","🤖"],
+
+  "topWords": [{ "word": "react", "count": 3 }],
+  "recommendations": [
+    "Great tone! Positive posts get more engagement.",
+    "Add 1–3 emojis to increase appeal."
+  ]
 }
 
-📝 Approach (200 Words)
+📝 Updated 200-Word Approach (NEW FEATURES INCLUDED)
 
-This application is designed to extract and analyze text from real-world user documents. The backend uses Node.js and Express to provide a clean, modular API. File uploads are handled by Multer. For PDF parsing, the application uses pdfjs-dist to extract structured text from normal PDFs. If the PDF is scanned or contains no selectable text, the system automatically falls back to Tesseract.js for OCR extraction. Image uploads (JPEG, PNG, etc.) are also processed through Tesseract.
+This application implements a hybrid document-processing architecture combining PDF text extraction and OCR scanning for maximum accuracy. Using pdfjs-dist, the system first attempts to extract structured text from any uploaded PDF. If the PDF contains no selectable text, the backend automatically switches to Tesseract.js to perform OCR and extract text from scanned pages or image uploads. All files are removed afterward to maintain a clean and safe server environment.
 
-After text extraction, uploaded files are removed automatically from the server to maintain a clean production environment. The text is then analyzed using a lightweight analysis module that calculates sentiment, readability score, engagement, word frequency, and overall document structure.
+The extracted text undergoes a multi-stage analysis pipeline. The analyzer computes readability, sentiment score, emoji usage, hashtag count, and overall engagement score. A custom NLP module detects the document’s topic—such as coding, fitness, food, or motivation—based on keyword clustering. The system then generates AI-like recommendations, suggesting hashtags, emojis, CTAs, and text improvements to maximize social media engagement. This includes dynamic hashtag generation based on detected topic and smart emoji suggestions.
 
-The frontend is built using React with a focus on a clean and user-friendly interface. A loading spinner ensures smooth UX during long OCR operations. Axios handles API communication. The project maintains clear separation of concerns through structured folders and service files.
+On the frontend, the dashboard UI is built with React and includes metric cards, animated score bars, hashtag chips, and smooth-loading interactions. Axios handles backend communication with an Express API. The project follows clean code practices, modular service structure, and strong error handling, making it production-ready and easy to extend.
 
-This project meets the technical requirements of clean code, error handling, documentation, and practical implementation within the provided time constraints.
+👤 Author
 
-Name :- Lav Kumar
+Lav Kumar
 MNNIT Allahabad
